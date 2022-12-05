@@ -91,5 +91,6 @@ public class MybatisTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
         UserController userController = (UserController) applicationContext.getBean("userController");
         userController.deleteUser(3);
+        System.out.println("随便添加一行代码，测试git");
     }
 }
