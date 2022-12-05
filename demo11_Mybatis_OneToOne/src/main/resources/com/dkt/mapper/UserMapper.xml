@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dkt.mapper.UserMapper">
+    <resultMap id="userAccountListMap" type="User">
+        <id property="uid" column="uid"></id>
+        <result property="username" column="username"></result>
+        <result property="sex" column="sex"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="address" column="address"></result>
+        <collection property="accountList" ofType="Account" autoMapping="true"></collection>
+    </resultMap>
+    <!-- 查询用户信息以及对应的账户信息 -->
+    <select id="findUserAccountListByUid" parameterType="int" resultMap="userAccountListMap">
+        select * from t_user u left join t_account a on u.uid=a.uid where u.uid=#{uid}
+    </select>
+</mapper>

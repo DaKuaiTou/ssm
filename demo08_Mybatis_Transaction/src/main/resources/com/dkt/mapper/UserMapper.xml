@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dkt.mapper.UserMapper">
+    <!-- 查询总人数 -->
+    <select id="findUserCount" resultType="long">
+        select count(*) from user
+    </select>
+    <!-- 根据id查询用户 -->
+    <select id="findUserById" resultType="User" parameterType="int">
+        select * from user where id=#{id}
+    </select>
+    <!-- 根据username查询用户 -->
+    <select id="findUserByName" resultType="User" parameterType="String">
+        select * from user where username=#{username}
+    </select>
+
+    <!-- 查询所有用户 -->
+    <select id="findAllUserList" resultType="User">
+        select * from user
+    </select>
+    <!-- 查询所有用户 -->
+    <select id="findAllUserMap" resultType="map">
+        select * from user
+    </select>
+
+    <resultMap id="userInfoMap" type="UserInfo" autoMapping="true">
+        <id property="idInfo" column="id"></id>
+        <result property="passwordInfo" column="nickname"></result>
+        <result property="nicknameInfo" column="nickname"></result>
+    </resultMap>
+    <!-- 查询用户信息 -->
+    <select id="findAllUserInfo" resultMap="userInfoMap">
+        select * from user
+    </select>
+
+    <insert id="addUser" parameterType="User">
+        insert into user (username,password,nickname) value(#{username},#{password},#{nickname})
+    </insert>
+</mapper>

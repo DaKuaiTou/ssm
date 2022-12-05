@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 加载数据库的配置文件 -->
+    <properties resource="jdbc.properties"></properties>
+    
+    <!-- 开启二级缓存 -->
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!-- 为实体类配置别名 -->
+    <typeAliases>
+        <!-- 给user实体类的全限定类名，起了别名user -->
+        <!--<typeAlias type="com.dkt.pojo.User" alias="User"></typeAlias>-->
+        <!-- 凡是在这个类下的所有实体类都起好了别名，别名就是类名的小写 -->
+        <package name="com.dkt.pojo"/>
+    </typeAliases>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <package name="com.dkt.mapper"/>
+    </mappers>
+</configuration>

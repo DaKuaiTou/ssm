@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="userService" class="com.dkt.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+        <property name="userName" value="张颜宇"></property>
+        <property name="age" value="21"></property>
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+                <value>王五</value>
+            </list>
+        </property>
+        <property name="userList">
+            <list>
+                <bean class="com.dkt.pojo.User"></bean>
+                <bean class="com.dkt.pojo.User">
+                    <property name="userName" value="懒洋洋"></property>
+                    <property name="age" value="12"></property>
+                </bean>
+                <ref bean="user1"></ref>
+                <ref bean="user2"></ref>
+            </list>
+        </property>
+        <property name="userMap">
+            <map>
+                <entry key="user1" value-ref="user1"></entry>
+                <entry key="user2" value-ref="user2"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="prop1">prop11</prop>
+                <prop key="prop2">prop22</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="user1" class="com.dkt.pojo.User">
+        <property name="userName" value="喜羊羊"></property>
+        <property name="age" value="22"></property>
+    </bean>
+    <bean id="user2" class="com.dkt.pojo.User"></bean>
+    <bean id="userDao" class="com.dkt.dao.impl.UserDaoImpl"></bean>
+</beans>
