@@ -8,9 +8,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +25,8 @@ import java.util.List;
  * @Date: 2022年12月02日 15:16
  * @Description:
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:spring.xml")
 public class MybatisTest {
     @Autowired
     private UserController userController;
@@ -52,24 +57,18 @@ public class MybatisTest {
 
     @Test
     public void findUser(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        UserController userController = (UserController) applicationContext.getBean("userController");
         List<User> user = userController.findUser();
         System.out.println(user);
     }
 
     @Test
     public void findUserById(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        UserController userController = (UserController) applicationContext.getBean("userController");
         User user = userController.findUserById(3);
         System.out.println(user);
     }
 
     @Test
     public void addUser(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        UserController userController = (UserController) applicationContext.getBean("userController");
         User user = new User();
         user.setUsername("勾八");
         user.setPassword("gouba123");
@@ -79,8 +78,6 @@ public class MybatisTest {
 
     @Test
     public void updateUser(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        UserController userController = (UserController) applicationContext.getBean("userController");
         User user = userController.findUserById(3);
         user.setPassword("lisan123");
         userController.updateUser(user);
@@ -88,8 +85,6 @@ public class MybatisTest {
 
     @Test
     public void deleteUser(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        UserController userController = (UserController) applicationContext.getBean("userController");
         userController.deleteUser(3);
         System.out.println("随便添加一行代码，测试git");
     }
