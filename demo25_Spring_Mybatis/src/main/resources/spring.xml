@@ -9,7 +9,7 @@
 
     <context:component-scan base-package="com.dkt"></context:component-scan>
 
-    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"   >
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="url" value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8"></property>
         <property name="username" value="root"></property>
