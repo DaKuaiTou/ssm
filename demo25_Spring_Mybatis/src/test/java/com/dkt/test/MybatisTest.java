@@ -34,7 +34,7 @@ public class MybatisTest {
     @Test
     public void test() throws IOException {
         // 加载核心配置文件
-        InputStream inputStream = Resources.getResourceAsStream("mapperConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("spring.xml");
         // 创建SqlSessionFactionBuild对
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
         // 使用build对象去加载字节输入流

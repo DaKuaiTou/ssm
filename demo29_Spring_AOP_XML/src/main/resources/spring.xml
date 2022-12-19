@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        ">
+    <!--包扫描-->
+    <context:component-scan base-package="com.dkt"></context:component-scan>
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* com.dkt.service.UserServiceImpl.*(..))"/>
+        <aop:aspect id="myAspect1" ref="myAspect">
+            <!-- 配置前置通知，增强所有的方法 -->
+            <aop:before method="checkPermission" pointcut-ref="pointcut"></aop:before>
+            <!-- 配置后置通知，有一个特殊的属性returning，专门用来指定切入点的返回值赋值给哪个参数 -->
+            <aop:after-returning method="printResult" returning="resultValue" pointcut-ref="pointcut"></aop:after-returning>
+            <!-- 配置异常通知，属性throwing获取捕获到的异常 -->
+            <aop:after-throwing method="printException" throwing="errorMsg" pointcut-ref="pointcut"></aop:after-throwing>
+            <!-- 配置最终通知-->
+            <aop:after method="close" pointcut-ref="pointcut"></aop:after>
+            <!-- 配置环绕通知-->
+            <aop:around method="totalTime" pointcut-ref="pointcut"></aop:around>
+        </aop:aspect>
+    </aop:config>
+</beans>
