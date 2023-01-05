@@ -26,11 +26,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public void transfer(String formName, String toName, Double money) {
-
         // 进行事务的相关转账操作
         accountMapper.updateAccount(formName, -money);
         int i = 1/0;
         accountMapper.updateAccount(toName, +money);
-
     }
 }
