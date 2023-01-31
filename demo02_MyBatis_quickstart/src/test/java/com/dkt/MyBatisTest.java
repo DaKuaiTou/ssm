@@ -1,6 +1,6 @@
 package com.dkt;
 
-import com.dkt.dao.UserDao;
+import com.dkt.mapper.UserDao;
 import com.dkt.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

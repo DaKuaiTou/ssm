@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--添加当前使用数据库的连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/shopping"
+                        userId="root"
+                        password="rootroot">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--javaModelGenerator标签用来配置生成的实体类所在包的包名以及实体类所在项目的绝对路径
+        targetPackage属性配置实体类所在包的包名
+        targetProject属性配置实体类在项目中的绝对路径
+        -->
+        <javaModelGenerator targetPackage="com.dkt.entity"
+                            targetProject="D:\JZPeiXun\MyBatis\demo02_MyBatis_quickstart\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--sqlMapGenerator标签用来配置mapper.xml文件所在包的包名以及在项目的绝对路径
+        targetPackage属性配置mapper.xml文件所在包的包名
+        targetProject属性配置mapper.xml文件在项目中的绝对路径
+        -->
+        <sqlMapGenerator targetPackage="com.dkt.mapper"
+                         targetProject="D:\JZPeiXun\MyBatis\demo02_MyBatis_quickstart\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--javaClientGenerator标签用来配置mapper接口的所在包的包名以及在项目中的绝对路径
+        targetPackage属性配置mapper接口所在包的包名
+        targetProject属性配置mapper接口在项目中的绝对路径
+        -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dkt.mapper"
+                             targetProject="D:\JZPeiXun\MyBatis\demo02_MyBatis_quickstart\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--table标签配置希望生成entity mapper接口 mapper.xml文件的表
+        tableName属性表示表名 domainObjectName表示生成实体类的名称
+        -->
+        <table tableName="product" domainObjectName="Product"></table>
+        <table tableName="member" domainObjectName="Member"></table>
+    </context>
+</generatorConfiguration>

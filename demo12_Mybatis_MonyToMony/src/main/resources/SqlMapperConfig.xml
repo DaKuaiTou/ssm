@@ -32,6 +32,6 @@
     </environments>
 
     <mappers>
-        <package name="com.dkt.mapper"/>
+        <mapper resource="com.dkt.mapper"></mapper>
     </mappers>
 </configuration>

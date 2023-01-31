@@ -10,7 +10,7 @@
     要求：跟标签mapper，一个映射配置文件，对应一个Dao接口
         跟标签的namespace命名空间，该属性的值对应的是dao接口的全限定名【动态代理】
 -->
-<mapper namespace="com.dkt.dao.UserDao">
+<mapper namespace="com.dkt.mapper.UserDao">
     <!--
         根标签的每一个子标签就对应着dao接口的每一个方法
         select标签对应查询的方法

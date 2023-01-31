@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.dkt</groupId>
-  <artifactId>demo39_SpringMVC_FormData</artifactId>
+  <artifactId>demo40_SpringMVC_Encoding</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>demo39_SpringMVC_FormData Maven Webapp</name>
+  <name>demo40_SpringMVC_Encoding Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -39,11 +39,10 @@
       <version>2.5</version>
       <scope>provided</scope>
     </dependency>
-    <!-- lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.12</version>
+      <version>1.18.22</version>
     </dependency>
   </dependencies>
 

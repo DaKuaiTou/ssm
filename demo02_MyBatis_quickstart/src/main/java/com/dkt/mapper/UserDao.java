@@ -1,4 +1,4 @@
-package com.dkt.dao;
+package com.dkt.mapper;
 
 import com.dkt.pojo.User;
 
