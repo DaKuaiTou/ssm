@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dkt.dao.UserDao">
+    <!-- 查询所有用户 -->
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+
+    <!-- 新增用户 -->
+    <insert id="addUser" parameterType="user">
+        insert into user (username,password,nickname) values (#{username},#{password},#{nickname})
+    </insert>
+
+    <!-- 批量删除 -->
+    <delete id="batchDeleteUser" parameterType="int">
+        delete from user where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!-- 分页查询 -->
+    <select id="selectUserListForPage" resultType="user">
+        select * from user
+        <where>
+            <if test="user.username!=null and user.username!=''">
+                username like #{user.username}
+            </if>
+            <if test="user.password!=null and user.password!=''">
+                and password like #{user.password}
+            </if>
+            <if test="user.nickname!=null and user.nickname!=''">
+                and nickname like #{user.nickname}
+            </if>
+        </where>
+        limit #{currPage},#{pageSize}
+    </select>
+
+    <!-- 查询总人数 -->
+    <select id="selectUserCount" parameterType="user" resultType="int">
+        select count(*) from user
+        <where>
+            <if test="username!=null and username!=''">
+                username like #{username}
+            </if>
+            <if test="password!=null and password!=''">
+                and password like #{password}
+            </if>
+            <if test="nickname!=null and nickname!=''">
+                and nickname like #{nickname}
+            </if>
+        </where>
+    </select>
+
+    <!-- 修改用户信息 -->
+    <update id="updateUser" parameterType="user">
+        update user
+        <set>
+            <if test="username!=null">
+                username = #{username}
+            </if>
+            <if test="password!=null">
+                ,password = #{password}
+            </if>
+            <if test="nickname != null">
+                ,nickname = #{nickname}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+</mapper>

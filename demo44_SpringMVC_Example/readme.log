@@ -1,0 +1,22 @@
+【综合案例】
+    1.依赖jar包
+        Spring的相关依赖
+            spring-context
+            spring-webmvc
+            spring-jdbc
+            mybatis
+            mybatis-spring
+        mysql驱动依赖
+        lombok
+        日志相关
+        jackson依赖
+    2.包结构，接口，实体类等
+    3.mybatis的映射文件
+    4.springMVC的配置文件
+        组件扫面
+        mvc注解驱动
+        整合mybatis
+    5.web.xml
+        DispatcherServlet
+        CharacterEncodingFilter
+    6.前端页面vue发起请求

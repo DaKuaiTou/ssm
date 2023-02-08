@@ -1,20 +1,22 @@
 package com.dkt.pojo;
 
-import java.io.Serializable;
+import lombok.Data;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author: dkt
  * @Pcakage: com.dkt.pojo.User
- * @Date: 2023年01月07日 18:46
+ * @Date: 2023年01月09日 22:26
  * @Description:
  */
-public class User{
+@Data
+public class User {
+    private int id;
     private String username;
     private String password;
     private String nickname;
-    private String birthday;
-
+    private Date birthday;
     private List<String> hobbies;
 }
